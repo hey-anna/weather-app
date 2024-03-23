@@ -147,7 +147,7 @@ function App() {
   useEffect(() => {
     getCurrentLocation(); // 현재위치를 가져와야 그기반의 날씨가 보이거든
     // getCurrentLocationWeather();
-    getWeatherByCity();
+    // getWeatherByCity();
   }, []);
 
   return (
