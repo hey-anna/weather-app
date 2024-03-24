@@ -1,23 +1,34 @@
 import React from "react";
+import LodingBar from "./LodingBar";
 
-export const WeatherBox = ({ weather }) => {
+export const WeatherBox = ({ weather, isLoading }) => {
   console.log("weather?", weather);
-  //   if (!weather) return <div>Loading...</div>;
-  if (
-    !weather ||
-    !weather.main ||
-    !weather.weather ||
-    weather.weather.length === 0
-  ) {
-    return <div>Loading...</div>;
+  //   const isLoading =
+  //     !weather ||
+  //     !weather.main ||
+  //     !weather.weather ||
+  //     weather.weather.length === 0;
+
+  if (isLoading) {
+    return <LodingBar />;
+    //  <div>Loading...</div>;
   }
+  //   if (!weather) return <div>Loading...</div>;
+  //   if (
+  //     !weather ||
+  //     !weather.main ||
+  //     !weather.weather ||
+  //     weather.weather.length === 0
+  //   ) {
+  //     return <div>Loading...</div>;
+  //   }
   //   const fahrenheit = (Math.floor(weather?.main.temp * 1.8 + 32) * 100) / 100;
   //   const celsius = weather?.main?.temp; // 섭씨 온도
   //   const fahrenheit = celsius ? (celsius * 1.8 + 32).toFixed(2) : null;
   const celsius = weather.main.temp; // 섭씨 온도
   const fahrenheit = (celsius * 1.8 + 32).toFixed(2);
   const weatherDescription = weather.weather[0]?.description;
-  console.log("");
+  //   console.log("");
   return (
     <div className="weather-box">
       <h1>{weather.name}</h1>
