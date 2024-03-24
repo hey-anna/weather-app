@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Alert from "react-bootstrap/Alert";
-// import Button from "react-bootstrap/Button";
+import Button from "react-bootstrap/Button";
 
 function ErrorPage({ message }) {
   const [show, setShow] = useState(true);
@@ -18,7 +18,7 @@ function ErrorPage({ message }) {
       </Alert>
     );
   }
-  //   return <Button onClick={() => setShow(true)}>Show Alert</Button>;
+  return <Button onClick={() => setShow(true)}>Re Tty!</Button>;
 }
 
 export default ErrorPage;

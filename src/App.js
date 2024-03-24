@@ -42,6 +42,7 @@ function App() {
   // position!! 얘한테서 매개변수가 오는거니깐,
 
   const API_KEY = "127ddf035270d1edf59d13bea8010ff6";
+  // const API_KEY = "invalid_key";
   const [weather, setWeather] = useState(null);
   // const [city, setCity] = useState("");
   const [loading, setLoading] = useState(false);
@@ -107,6 +108,12 @@ function App() {
       setLoading(true);
       let response = await fetch(url); //async 비동기적으로 처리해줄게요. 여기가 비동기
       let data = await response.json(); // let await에서 json을 추출하는것을 조금마 기다려 줄래?
+
+      // 응답오류가 있는 경우 에러 강제 발생
+      // if (!response.ok) {
+      //   throw new Error("Failed to fetch weather data");
+      // }
+
       setWeather(data);
       console.log("data", data);
       setLoading(false);
@@ -122,9 +129,16 @@ function App() {
   const getWeatherByCity = async (cityName) => {
     try {
       let url = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${API_KEY}&units=metric`;
+      // let url = `https://api.openweathermap.org/data/2.5/weather?invalid_param`;
       setLoading(true);
       let response = await fetch(url);
       let data = await response.json();
+
+      // // 응답오류가 있는 경우 에러 강제 발생
+      // if (!response.ok) {
+      //   throw new Error("Failed to fetch weather data");
+      // }
+
       setWeather(data);
       console.log(`날씨 정보 (${cityName}):`, data);
       console.log("### data", data);
